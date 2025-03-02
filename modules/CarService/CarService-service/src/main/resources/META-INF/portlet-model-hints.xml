@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="spheos.model.Car">
+		<field name="carId" type="long" />
+		<field name="brand" type="String" />
+		<field name="modell" type="String" />
+		<field name="year" type="int" />
+		<field name="color" type="String" />
+		<field name="price" type="double" />
+	</model>
+</model-hints>

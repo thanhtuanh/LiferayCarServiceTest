@@ -1,0 +1,11 @@
+Bundle-Name: CarService-api
+Bundle-SymbolicName: pheos.api
+Bundle-Version: 1.0.0
+
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../CarService-service/service.xml
+Import-Package: \
+    com.liferay.portal.kernel.service, \
+    com.liferay.portal.kernel.exception, \
+    com.liferay.portal.kernel.model, \
+    *

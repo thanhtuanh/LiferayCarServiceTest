@@ -1,0 +1,12 @@
+dependencies {
+	api project(":modules:CarService:CarService-api")
+
+	compileOnly group: "com.liferay.portal", name: "release.dxp.api"
+}
+
+buildService {
+	apiDir = "../CarService-api/src/main/java"
+	testDir = "../CarService-test/src/testIntegration/java"
+}
+
+group = "pheos"
