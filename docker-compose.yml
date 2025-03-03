@@ -1,6 +1,6 @@
 services:
   liferay:
-    image: liferay/dxp:7.4.13-u45
+    image: liferay/dxp:7.4.13-u92
     container_name: liferay-dxp
     restart: always
     ports:
