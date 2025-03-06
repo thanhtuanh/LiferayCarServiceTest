@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: liferay-car-service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: liferay-car-service
+  template:
+    metadata:
+      labels:
+        app: liferay-car-service
+    spec:
+      containers:
+        - name: liferay-car-service
+          image: YOUR_DOCKERHUB_USERNAME/liferay-car-service:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: LIFERAY_JDBC_DEFAULT_USERNAME
+              value: "liferay"
+            - name: LIFERAY_JDBC_DEFAULT_PASSWORD
+              value: "liferay"
+            - name: LIFERAY_JDBC_DEFAULT_URL
+              value: "jdbc:mysql://mysql:3306/liferay"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: liferay-car-service
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 8080
+  selector:
+    app: liferay-car-service

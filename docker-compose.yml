@@ -6,7 +6,7 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - LIFERAY_JVM_OPTS=-Xms2g -Xmx2g
+      - LIFERAY_JVM_OPTS=-Xms4g -Xmx4g
     volumes:
       - ./deploy:/opt/liferay/deploy
       - ./configs/portal-ext.properties:/opt/liferay/portal-ext.properties

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: liferay-car-service
+  labels:
+    app: liferay-car-service
+spec:
+  type: LoadBalancer  # Ändere zu "ClusterIP", wenn es innerhalb des Clusters bleiben soll
+  ports:
+    - port: 8080        # Externer Port
+      targetPort: 8080   # Container Port
+  selector:
+    app: liferay-car-service

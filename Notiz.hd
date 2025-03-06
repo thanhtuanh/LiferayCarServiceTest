@@ -9,3 +9,42 @@ REST-API-Klasse (JAX-RS oder REST-Builder), um die Daten per HTTP abrufbar zu ma
 
 CarLocalServiceImpl.java
 CarResource.java
+
+LiferayCarServiceTest/
+│── .github/
+│   └── workflows/
+│       └── ci-cd.yml               # GitHub Actions für CI/CD
+│
+│── modules/
+│   └── CarService/                 # Dein Liferay OSGi-Modul
+│       ├── CarService-api/         # API-Interfaces (Schnittstellen)
+│       │   ├── src/main/java/spheos/model/Car.java
+│       │   ├── src/main/java/spheos/service/CarLocalService.java
+│       │   ├── src/main/resources/META-INF/service.xml
+│       │   ├── build.gradle
+│       │   ├── bnd.bnd
+│       │   └── service.properties
+│       │
+│       ├── CarService-service/     # Service-Implementierung
+│       │   ├── src/main/java/spheos/service/impl/CarLocalServiceImpl.java
+│       │   ├── src/main/java/spheos/rest/CarResource.java
+│       │   ├── src/main/resources/META-INF/spring/module-spring.xml
+│       │   ├── build.gradle
+│       │   ├── bnd.bnd
+│       │   ├── service.properties
+│       │   └── database/            # Falls du SQL-Skripte hast
+│       │       └── liferay.sql
+│       │
+│       └── settings.gradle          # Gradle-Settings für Liferay Module
+│
+│── deployment/
+│   ├── Dockerfile                    # Docker-Image für Liferay
+│   ├── docker-compose.yml             # Docker-Compose für lokale Tests
+│   ├── k8s-deployment.yml             # Kubernetes Deployment für Liferay
+│   └── k8s-service.yml                # Kubernetes Service für Load Balancer
+│
+│── sonar-project.properties           # Konfiguration für SonarQube Code-Analyse
+│── gradlew                            # Gradle Wrapper für Builds
+│── build.gradle                        # Haupt-Gradle Datei (falls nötig)
+│── settings.gradle                      # Gradle-Settings für das gesamte Projekt
+│── README.md                            # Dokumentation deines Projekts
