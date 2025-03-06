@@ -1,25 +1,27 @@
-
-
-## 📌 LiferayCarService – OSGi-Modul mit Liferay Service Builder und REST-Schnittstelle
-
-### 🚀 Projektbeschreibung
-Das Projekt LiferayCarService ist ein OSGi-Modul für Liferay 7.4, das über den Liferay Service Builder entwickelt wurde. Es ermöglicht die Verwaltung von Autos eines Gebrauchtwagenhändlers und stellt eine REST-API bereit, um CRUD-Operationen durchzuführen.
+Hier ist eine Analyse und Dokumentation deines Projekts **LiferayCarService**, die du als Zusammenfassung für deine Aufgabe verwenden kannst:
 
 ---
 
-## 1️⃣ Verwendete Tools & Technologien
-- Liferay 7.4 (DXP) Docker Image: Für die lokale Laufzeitumgebung.
-- Gradle: Build-System zur Erstellung der Module.
-- Liferay Service Builder: Generierung der Service- und Persistenzschicht.
-- JAX-RS (Java API for RESTful Web Services): Bereitstellung der REST-API.
-- OSGi (Open Service Gateway Initiative): Modulares Plugin-System für Liferay.
-- Docker Compose: Automatische Bereitstellung von Liferay als Container.
-- cURL: Zum Testen der REST-API-Endpunkte.
+## **📌 LiferayCarService – OSGi-Modul mit Liferay Service Builder und REST-Schnittstelle**
+
+### **🚀 Projektbeschreibung**
+Das Projekt **LiferayCarService** ist ein **OSGi-Modul** für Liferay 7.4, das über den **Liferay Service Builder** entwickelt wurde. Es ermöglicht die Verwaltung von **Autos eines Gebrauchtwagenhändlers** und stellt eine **REST-API** bereit, um CRUD-Operationen durchzuführen.
 
 ---
 
-## 2️⃣ Liferay lokal ausführen
-Ich habe Liferay DXP mit Docker Compose gestartet.
+## **1️⃣ Verwendete Tools & Technologien**
+- **Liferay 7.4 (DXP) Docker Image**: Für die lokale Laufzeitumgebung.
+- **Gradle**: Build-System zur Erstellung der Module.
+- **Liferay Service Builder**: Generierung der Service- und Persistenzschicht.
+- **JAX-RS (Java API for RESTful Web Services)**: Bereitstellung der REST-API.
+- **OSGi (Open Service Gateway Initiative)**: Modulares Plugin-System für Liferay.
+- **Docker Compose**: Automatische Bereitstellung von Liferay als Container.
+- **cURL**: Zum Testen der REST-API-Endpunkte.
+
+---
+
+## **2️⃣ Liferay lokal ausführen**
+Ich habe **Liferay DXP** mit **Docker Compose** gestartet.
 Die Konfiguration in `docker-compose.yml`:
 ```yaml
 services:
@@ -39,22 +41,22 @@ Dadurch wurde Liferay unter `http://localhost:8080` bereitgestellt.
 
 ---
 
-## 3️⃣ Code-Struktur & Module
-Das Projekt besteht aus zwei Hauptmodulen:
+## **3️⃣ Code-Struktur & Module**
+Das Projekt besteht aus **zwei Hauptmodulen**:
 
-1. `CarService-api` (API-Definition)
-   - Enthält die Service-Interfaces, das Modell und die REST-API.
+1. **`CarService-api`** (API-Definition)
+   - Enthält die **Service-Interfaces**, das **Modell** und die **REST-API**.
    - Generierte Service-Klasse: `CarLocalService`
    - REST-Controller: `CarResource`
 
-2. `CarService-service` (Implementierung)
-   - Enthält die Geschäftslogik und die Persistenzschicht.
+2. **`CarService-service`** (Implementierung)
+   - Enthält die **Geschäftslogik** und die **Persistenzschicht**.
    - Generierte Service-Implementierung: `CarLocalServiceImpl`
    - Datenbankzugriff über `carPersistence`
 
-Wichtige Dateien:
+**Wichtige Dateien:**
 
-### 📌 `service.xml` – Definition der Datenbankstruktur
+### **📌 `service.xml` – Definition der Datenbankstruktur**
 ```xml
 <service-builder package-path="spheos">
 	<namespace>CAR</namespace>
@@ -68,12 +70,12 @@ Wichtige Dateien:
 	</entity>
 </service-builder>
 ```
-> Ergebnis: Service Builder generiert die notwendigen Service-Klassen.
+> **Ergebnis:** Service Builder generiert die notwendigen Service-Klassen.
 
 ---
 
-## 4️⃣ Implementierung der REST-API
-📌 `CarResource.java` – Bereitstellung der REST-API
+## **4️⃣ Implementierung der REST-API**
+**📌 `CarResource.java` – Bereitstellung der REST-API**
 ```java
 package spheos.rest;
 
@@ -147,33 +149,33 @@ public class CarResource {
     }
 }
 ```
-> Ergebnis: Die API bietet CRUD-Funktionalität für `Car`.
+> **Ergebnis:** Die API bietet CRUD-Funktionalität für `Car`.
 
 ---
 
-## 5️⃣ Build & Deployment
-1. Service Builder ausführen:
+## **5️⃣ Build & Deployment**
+1. **Service Builder ausführen:**
    ```sh
    gradle clean buildService
    gradle build
    ```
-2. Module nach Docker kopieren:
+2. **Module nach Docker kopieren:**
    ```sh
    docker cp modules/CarService/CarService-api/build/libs/pheos.api-1.0.0.jar liferay-dxp:/opt/liferay/osgi/modules/
    docker cp modules/CarService/CarService-service/build/libs/pheos.service-1.0.0.jar liferay-dxp:/opt/liferay/osgi/modules/
    ```
-3. Liferay-Logs prüfen:
+3. **Liferay-Logs prüfen:**
    ```sh
    docker logs -f liferay-dxp
    ```
-> Ergebnis: Das Modul wurde erfolgreich in Liferay deployt.
+> **Ergebnis:** Das Modul wurde erfolgreich in Liferay deployt.
 
 ---
 
-## 6️⃣ API-Tests mit cURL
-Nachdem das Modul erfolgreich geladen wurde, habe ich die API mit Benutzer `test` und Passwort `a` getestet.
+## **6️⃣ API-Tests mit cURL**
+Nachdem das Modul erfolgreich geladen wurde, habe ich die API mit **Benutzer `test` und Passwort `a`** getestet.
 
-### 📌 Auto erstellen
+### **📌 Auto erstellen**
 ```sh
 curl -u test@liferay.com:a -X POST "http://localhost:8080/o/cars" \
 -H "Content-Type: application/json" \
@@ -186,17 +188,17 @@ curl -u test@liferay.com:a -X POST "http://localhost:8080/o/cars" \
 }'
 ```
 
-### 📌 Alle Autos abrufen
+### **📌 Alle Autos abrufen**
 ```sh
 curl -u test@liferay.com:a -X GET "http://localhost:8080/o/cars"
 ```
 
-### 📌 Ein Auto abrufen
+### **📌 Ein Auto abrufen**
 ```sh
 curl -u test@liferay.com:a -X GET "http://localhost:8080/o/cars/1"
 ```
 
-### 📌 Ein Auto aktualisieren
+### **📌 Ein Auto aktualisieren**
 ```sh
 curl -u test@liferay.com:a -X PUT "http://localhost:8080/o/cars/1" -H "Content-Type: application/json" -d '{
   "brand": "BMW",
@@ -207,16 +209,16 @@ curl -u test@liferay.com:a -X PUT "http://localhost:8080/o/cars/1" -H "Content-T
 }'
 ```
 
-### 📌 Ein Auto löschen
+### **📌 Ein Auto löschen**
 ```sh
 curl -u test@liferay.com:a -X DELETE "http://localhost:8080/o/cars/1"
 ```
 
 ---
 
-## 7️⃣ Herausforderungen & Probleme
-- 🛠 Fehlende Import-Pakete (`com.liferay.portal.kernel.service`, `spheos.model`)
-- 🛠 Java Heap Space Fehler → Speicher erhöht (`-Xmx4096m`)
-- 🛠 OSGi-Module nicht gestartet → `bnd.bnd`-Korrekturen
+## **7️⃣ Herausforderungen & Probleme**
+- 🛠 **Fehlende Import-Pakete** (`com.liferay.portal.kernel.service`, `spheos.model`)
+- 🛠 **Java Heap Space Fehler** → Speicher erhöht (`-Xmx4096m`)
+- 🛠 **OSGi-Module nicht gestartet** → `bnd.bnd`-Korrekturen
 
-> Ergebnis: Nach Debugging und Fixes wurde das Modul erfolgreich deployed! 🚀
+> **Ergebnis:** Nach Debugging und Fixes wurde das Modul erfolgreich deployed! 🚀
