@@ -1,0 +1,11 @@
+
+
+
+CarLocalServiceImpl.java
+    Hier schreibst du die eigentliche Geschäftslogik! Beispiel: Validierung, komplexe Berechnungen.
+CarResource.java
+REST-API-Klasse (JAX-RS oder REST-Builder), um die Daten per HTTP abrufbar zu machen.
+
+
+CarLocalServiceImpl.java
+CarResource.java

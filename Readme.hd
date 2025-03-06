@@ -3,7 +3,8 @@
 ## 📌 LiferayCarService – OSGi-Modul mit Liferay Service Builder und REST-Schnittstelle
 
 ### 🚀 Projektbeschreibung
-Das Projekt LiferayCarService ist ein OSGi-Modul für Liferay 7.4, das über den Liferay Service Builder entwickelt wurde. Es ermöglicht die Verwaltung von Autos eines Gebrauchtwagenhändlers und stellt eine REST-API bereit, um CRUD-Operationen durchzuführen.
+Das Projekt LiferayCarService ist ein OSGi-Modul für Liferay 7.4, das über den Liferay Service Builder entwickelt wurde.
+Es ermöglicht die Verwaltung von Autos eines Gebrauchtwagenhändlers und stellt eine REST-API bereit, um CRUD-Operationen durchzuführen.
 
 ---
 
