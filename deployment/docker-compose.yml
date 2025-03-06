@@ -8,28 +8,27 @@ services:
       - "8080:8080"
     environment:
       - LIFERAY_JVM_OPTS=-Xms4g -Xmx4g
-      - LIFERAY_JDBC_DEFAULT_URL=jdbc:mysql://mysql:3306/lportal
+      - LIFERAY_JDBC_DEFAULT_URL=jdbc:postgresql://postgres:5432/lportal
       - LIFERAY_JDBC_DEFAULT_USERNAME=liferay
       - LIFERAY_JDBC_DEFAULT_PASSWORD=liferay
     volumes:
       - ./deploy:/opt/liferay/deploy
       - ./configs/portal-ext.properties:/opt/liferay/portal-ext.properties
     depends_on:
-      - mysql
+      - postgres
 
-  mysql:
-    image: mysql:5.7
-    container_name: liferay-mysql
+  postgres:
+    image: postgres:13
+    container_name: liferay-postgres
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: lportal
-      MYSQL_USER: liferay
-      MYSQL_PASSWORD: liferay
+      POSTGRES_DB: lportal
+      POSTGRES_USER: liferay
+      POSTGRES_PASSWORD: liferay
     ports:
-      - "3306:3306"
+      - "5433:5432"
     volumes:
-      - mysql_data:/var/lib/mysql
+      - postgres_data:/var/lib/postgresql/data
 
 volumes:
-  mysql_data:
+  postgres_data:
